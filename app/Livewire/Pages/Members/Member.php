@@ -21,6 +21,7 @@ class Member extends Component
 
     public $search;
 
+   
     public $selectuserID = 0;
 
     protected $rules = [
@@ -34,6 +35,10 @@ class Member extends Component
 
     public function save()
     {
+
+        sleep(2);
+
+
         $validated = $this->validate();
 
         $existedMember = Customer::where('fname', $validated['fname'])
@@ -41,13 +46,13 @@ class Member extends Component
                                  ->first();
 
         if ($existedMember) {
-            Toaster::error('Mteja ' . $validated['nickname'] . ' Hawezi kusajiliwa tena tayari yupo kwenye mfumo!'); // 👈
+            Toaster::error('Mteja ' . $validated['fname'] . ' Hawezi kusajiliwa tena tayari yupo kwenye mfumo!'); // 👈
             return redirect()->back();
         }
 
         Customer::create($validated);
 
-        Toaster::success('Umefanikiwa kumsajili!' .$validated['nickname']. ' '); // 👈
+        Toaster::success('Umefanikiwa kumsajili!' .$validated['fname']. ' '); // 👈
     }
 public function changeDelete($memberid)
 {
@@ -64,8 +69,44 @@ public function deleteUser()
     $user->delete();
     $this->selectuserID =0;
 
-    Toaster::success('deleted');
+    Toaster::success('umefanikiwa kufuta');
 }
+
+public $showModal = false;
+
+public $member;
+
+public function edit($id)
+{
+    $this->member = Customer::find($id);
+    $this->fname = $this->member->fname;
+    $this->phone = $this->member->phone;
+    $this->nickname = $this->member->nickname;
+    $this->gender = $this->member->gender;
+
+    
+}
+
+public function update()
+{
+   
+
+    $this->member->update([
+        'fname' => $this->fname,
+        'phone' => $this->phone,
+        'nickname' => $this->nickname,
+        'gender' => $this->gender,
+    ]);
+
+    $this->dispatch('member-updated', ['memberId' => $this->member->id]);
+    $this->reset();
+    
+
+    Toaster::success('updated');
+}
+
+
+
 
 
 
@@ -80,6 +121,9 @@ public function deleteUser()
             ->orWhere('lname', 'like', "%{$this->search}%")
             ->orWhere('nickname', 'like', "%{$this->search}%")
             ->paginate(3);
+
+           
+
         return view('livewire.pages.member', ['members' => $members]);
     }
 }

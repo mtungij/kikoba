@@ -39,7 +39,7 @@
                             <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
                                 <!-- <img class="w-10 h-10 rounded-full" src="../../images/users/robert-brown.png" alt="Robert Brown avatar">  -->
                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                    <div class="text-base font-semibold text-gray-900 dark:text-white uppercase">{{$member->fname ." ". $member->lname}}</div>
+                                    <div class="text-base font-semibold text-gray-900 dark:text-white uppercase">{{$member->fname}}</div>
                                 </div>
                             </td>
                             <!-- <td class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">{{$member->nickname}}</td> -->

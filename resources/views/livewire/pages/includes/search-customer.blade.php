@@ -12,7 +12,7 @@
                                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                            <input wire:model.live.debounce.500ms='search' type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
                         </div>
                     </form>
                 </div>
@@ -64,9 +64,9 @@
                                 </div>
                             </td>
                             <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                <img class="w-10 h-10 rounded-full" src="{{ asset('assets/diversity.png') }}" alt="Diversity" alt="Neil Sims avatar">
+                                <img class="w-10 h-10 rounded-full" src="{{ asset('assets/diversity.png') }}" alt="Diversity">
                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                <div class="text-base font-semibold text-gray-900 dark:text-white">{{$member->fname ." ". $member->lname}}</div>
+                                <div class="text-base font-semibold text-gray-900 dark:text-white">{{$member->fname}}</div>
                                 <div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{$member->created_at->diffForHumans()}}</div>
                                 </div>
                             </td>
@@ -84,12 +84,9 @@
                            
                             
 
-                            <td class="p-4 space-x-2 whitespace-nowrap">
-                                <button type="button" id="updateProductButton" data-drawer-target="drawer-update-product-default" data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default" data-drawer-placement="right" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                                    Update
-                                </button>
-                              @include("livewire.pages.includes.delete-memember")
+                            @include("livewire.pages.includes.update-member")
+
+                              @include("livewire.pages.includes.delete-member")
                             </td>
                         </tr> 
                         @endforeach                
