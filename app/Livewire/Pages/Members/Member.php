@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\Pages\Members;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Masmerise\Toaster\Toaster;
 
 use App\Models\Customer;
@@ -105,6 +106,17 @@ public function update()
     Toaster::success('updated');
 }
 
+
+public function viewPdf()
+{
+    $members =Customer::all();
+
+    $pdf = Pdf::loadView('members',['members'=>$members])
+    ->setPaper('A4','Landscape');
+    return response()->streamDownload(function () use ($pdf) {
+        echo $pdf->stream();
+        }, 'members.pdf');
+}
 
 
 
