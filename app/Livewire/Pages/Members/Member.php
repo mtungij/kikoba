@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Livewire\Pages\Members;
+use App\Exports\MemberExport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Masmerise\Toaster\Toaster;
-
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Customer;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -116,6 +117,11 @@ public function viewPdf()
     return response()->streamDownload(function () use ($pdf) {
         echo $pdf->stream();
         }, 'members.pdf');
+}
+
+public function DownloadX()
+{
+    return Excel::download(new MemberExport, 'members.xlsx');
 }
 
 
