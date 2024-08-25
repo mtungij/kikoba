@@ -121,7 +121,9 @@ public function viewPdf()
 
 public function DownloadX()
 {
+   
     return Excel::download(new MemberExport, 'members.xlsx');
+    
 }
 
 

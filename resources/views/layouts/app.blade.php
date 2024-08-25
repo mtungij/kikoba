@@ -35,7 +35,7 @@
                 </header>
             @endif
 
-            <div  class="overflow-y-auto mt-10  bg-gray-50 lg:ml-64 px-6 pt-8 dark:bg-gray-900">
+            <div  class="overflow-y-auto mt-10  bg-gray-50 lg:ml-64  pt-8 dark:bg-gray-900">
             <main>
                 {{ $slot }}
             </main>

@@ -2,6 +2,7 @@
 
 use App\Livewire\Members;
 use App\Livewire\Pages\Members\Member;
+use App\Livewire\Pages\Members\Payments;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -17,7 +18,12 @@ Route::view('profile', 'profile')
 
     
     Route::get('members', Member::class)
+    ->middleware(['auth', Member::class])
     ->name('members');
+
+    Route::get('payments', Payments::class)
+    ->middleware(['auth', payments::class])
+    ->name('payments');
         
     
 

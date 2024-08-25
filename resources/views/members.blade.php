@@ -78,7 +78,7 @@
                     <td>{{$member->phone}}</td>
                     <td>{{$member->nickname}}</td>
                     <td>{{$member->gender}} </td>
-                    <td>{{$member->created_at->diffForhumans()}}</td>
+                    <td>{{$member->created_at}}</td>
                 </tr>
                 @endforeach;
             </tbody>
