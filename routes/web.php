@@ -5,6 +5,7 @@ use App\Livewire\Members;
 use App\Livewire\Pages\Admins\Admins;
 use App\Livewire\Pages\Members\Member;
 use App\Livewire\Pages\Members\Payments;
+use App\Livewire\Pages\Payments\Method;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,6 +30,11 @@ Route::resource('users', UserController::class);
     Route::get('payments', Payments::class)
     ->middleware(['auth', payments::class])
     ->name('payments');
+
+
+    Route::get('method', Method::class)
+    ->middleware(['auth', Method::class])
+    ->name('method');
 
 
 

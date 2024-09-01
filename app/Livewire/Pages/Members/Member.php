@@ -15,9 +15,9 @@ class Member extends Component
 
     use WithPagination;
     public $fname;
-    public $lname;
+   
     public $nickname;
-    public $address;
+   
     public $phone = '255';
     public $gender;
 
@@ -27,10 +27,10 @@ class Member extends Component
     public $selectuserID = 0;
 
     protected $rules = [
-        'fname' => 'required',
-        'lname' => 'required',
+        'fname' => 'sometimes',
+        
         'nickname' => 'required',
-        'address' => 'required',
+       
         'phone' => 'required',
         'gender' => 'required',
     ];
@@ -44,7 +44,7 @@ class Member extends Component
         $validated = $this->validate();
 
         $existedMember = Customer::where('fname', $validated['fname'])
-                                 ->where('lname', $validated['lname'])
+                    
                                  ->first();
 
         if ($existedMember) {
@@ -138,7 +138,7 @@ public function DownloadX()
 
         $members = Customer::latest()
             ->where('fname', 'like', "%{$this->search}%")
-            ->orWhere('lname', 'like', "%{$this->search}%")
+
             ->orWhere('nickname', 'like', "%{$this->search}%")
             ->paginate(3);
 

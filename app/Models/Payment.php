@@ -14,6 +14,8 @@ class Payment extends Model
 
     ];
 
+  
+
     public function receives():HasMany
     {
         return $this->hasMany(Receive::class);

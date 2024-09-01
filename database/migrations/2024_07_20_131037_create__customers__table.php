@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('fname');
-            $table->string('lname');
             $table->string('nickname');
-            $table->string('address');
             $table->string('gender');
             $table->string('phone');
             $table->string('status')->default('active');

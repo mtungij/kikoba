@@ -1,59 +1,69 @@
 <?php
-
 namespace App\Livewire\Pages\Members;
 
 use App\Models\Customer;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
-use Illuminate\Contracts\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\Attributes\Url;
 
-class Payments extends Component implements HasForms
+class Payments extends Component 
 {
 
-    use InteractsWithForms;
 
+    public $fname;
+    public $lname;
 
-    public $members = [];
-    public $fname = "";
-    public $lname = "";
+    public $nickname;
 
-    public $nickname = "";
+    public $gender;
 
-    public $gender = "";
+    public $phone;
 
-    public $phone = "";
+    public $amount;
+    public $payer;
 
-
-    public function mount(): void
-    {
-        $this->form->fill();
-    }
+ 
+public $currentCustomer;    
 
    
-public function form(Form $form): Form
-{
-    return $form->schema([
-        Select::make('status')
-            ->label('Status')
-            ->options([
-                'draft' => 'Draft',
-                'reviewing' => 'Reviewing',
-                'published' => 'Published',
-            ])
-            ->native(false), // Use Filament's custom select component
-    ]);
-}
+    public $selectedCustomer;
+    public $customers = [];
+    public $customerDetails = [];
 
-        
-     
+    public function mount()
+    {
+        // Fetch initial list of customers
+        $this->customers = Customer::all(); // Adjust as needed
+        $this->customerDetails = []; // Initialize as empty array
+        if ($this->selectedCustomer) {
+            $customer = Customer::find($this->selectedCustomer);
+            $this->currentCustomer = $customer;
+        } 
+    }
+
+
+    
+
+   
+
+    public function selectCustomer()
+    {
+        if ($this->selectedCustomer) {
+            $customer = Customer::find($this->selectedCustomer);
+            $this->currentCustomer = $customer;
+
+            $this->dispatch('customer-changed');
+
+        } 
+    }
+    
+    
+
     public function render()
     {
-        $latest = Customer::latest()->first();
-        return view('livewire.pages.payments',['latest' => $latest]);
+    
+        
+
+        return view('livewire.pages.payments');
     }
 }
