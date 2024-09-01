@@ -19,6 +19,14 @@
         document.documentElement.classList.remove('dark')
     }
 </script>
+<style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+ 
+        @filamentStyles
+        @vite('resources/css/app.css')
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -38,6 +46,7 @@
             <div  class="overflow-y-auto mt-10  bg-gray-50 lg:ml-64  pt-8 dark:bg-gray-900">
             <main>
                 {{ $slot }}
+                
             </main>
             </div>
         </div>

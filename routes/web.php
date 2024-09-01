@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Livewire\Members;
+use App\Livewire\Pages\Admins\Admins;
 use App\Livewire\Pages\Members\Member;
 use App\Livewire\Pages\Members\Payments;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -16,6 +18,9 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 
+Route::resource('users', UserController::class);
+
+
     
     Route::get('members', Member::class)
     ->middleware(['auth', Member::class])
@@ -24,6 +29,12 @@ Route::view('profile', 'profile')
     Route::get('payments', Payments::class)
     ->middleware(['auth', payments::class])
     ->name('payments');
+
+
+
+    Route::get('admins', Admins::class)
+    ->middleware(['auth', Admins::class])
+    ->name('admins');
         
     
 

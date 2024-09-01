@@ -9,8 +9,10 @@
         
       </div>
       <div>
-        <h3 class="text-xl  relative font-bold leading-6 dark:text-gray-400">Dadda Hicham</h3>
-        <p class="text-sm text-gray-600">@daddasoft</p>
+ 
+
+        <h3 class="text-xl  relative font-bold leading-6 dark:text-gray-400 uppercase">{{$latest->fname}}</h3>
+        <p class="text-sm text-gray-600">{{$latest->phone}}</p>
       </div>
       {{-- <div class="flex gap-3 flex-wrap">
         <span class="rounded-sm bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800">Developer</span>
@@ -35,81 +37,13 @@
 
 
  
-            <div class="overflow-x-auto">
-            <table class="min-w-full divide-y border-collapse border   divide-gray-200 table-fixed dark:divide-gray-600">
-                    <thead class=" dark:text-white text-white  bg-primary-700 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800  hover:bg-primary-800">
-                        <tr>
-                          
-                            <th scope="col" class="p-2 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Tarehe
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Maelezo
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Weka
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Toa
-                            </th>
-                           
-                            <th scope="col" class="p-2 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-                                Salio
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                        
-                 
-                        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                          
-                            <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                <div class="text-base font-semibold  text-gray-900 dark:text-white">11/09/2024</div>
-                            </td>
-
-                            
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">John/weka/cash</td>
-                            
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">00.00</td>
-
-                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="flex items-center">
-                                     <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>  5000
-                                </div>
-                            </td>
-                           <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                              5000
-                            </td>
-                        </tr> 
-                         <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                          
-                            <td class="flex items-center p-4 mr-12 space-x-6 whitespace-nowrap">
-                                <div class="text-base font-semibold  text-gray-900 dark:text-white">11/09/2024</div>
-                            </td>
-
-                            
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">James/weka/cash</td>
-                            
-                            <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">10,000</td>
-
-                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                <div class="flex items-center">
-                                     <div class="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div>  00.00
-                                </div>
-                            </td>
-                            <td class="p-4 text-base font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                           10,000
-                    
-                            </td>
-                        </tr> 
-                                    
-                    </tbody>
-                </table>
-            </div>
+{{ $this->form }}
 
 
 
 
 
+
+<x-filament-actions::modals />
         </div>
  

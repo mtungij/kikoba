@@ -50,7 +50,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         <div>
             <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input wire:model.live="phone" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
+            <x-text-input wire:model.live="phone" id="name" class="block mt-1 w-full" type="number" name="name" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
