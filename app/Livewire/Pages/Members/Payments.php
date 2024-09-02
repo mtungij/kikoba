@@ -2,13 +2,16 @@
 namespace App\Livewire\Pages\Members;
 
 use App\Models\Customer;
+use App\Models\Payment;
+use App\Models\Receive;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 use Livewire\Attributes\Url;
 
 class Payments extends Component 
 {
-
+    
 
     public $fname;
     public $lname;
@@ -20,15 +23,46 @@ class Payments extends Component
     public $phone;
 
     public $amount;
+
+    
     public $payer;
 
- 
-public $currentCustomer;    
+    public $customer_id;
 
-   
+    public $payment_id;
+    public $user_id;
+
+    public $currentCustomer;    
+
+    #[Url]
     public $selectedCustomer;
     public $customers = [];
     public $customerDetails = [];
+
+   
+    protected $rules = [
+        'amount' => 'required|numeric',
+        'payer' => 'required|string|max:255',
+        'payment_id' => 'required|exists:payments,id',
+    ];
+
+ 
+    public function save()
+    {
+       $validated =$this->validate();
+
+       
+    
+        Receive::create([...$validated, 'user_id' => auth()->id(), 'customer_id' => $this->selectedCustomer]);
+
+    
+        Toaster::success('Receive entry saved successfully.');
+
+        $this->reset();
+    }
+
+ 
+
 
     public function mount()
     {
@@ -62,8 +96,8 @@ public $currentCustomer;
     public function render()
     {
     
-        
-
-        return view('livewire.pages.payments');
+        $deposits = $this->selectedCustomer ? Receive::where('customer_id', $this->selectedCustomer)->get() : collect([]);
+       $payments=Payment::all();
+        return view('livewire.pages.payments',['payments' => $payments , 'deposits' => $deposits]);
     }
 }
