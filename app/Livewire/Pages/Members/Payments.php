@@ -86,7 +86,7 @@ class Payments extends Component
         'payment_id' => $this->payment_id,
     ]);
 
-    $date = now()->format('Y-m-d H:i:s'); // Format the current date and time
+    $date = now()->format('Y-m-d H:i:s');
     $message = "Deposit of {$this->deposit} made by {$this->payer} ({$this->nickname}) on {$date}.";
     $phone = $this->currentCustomer->phone; 
 
