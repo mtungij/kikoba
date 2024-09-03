@@ -10,11 +10,15 @@
                 <h3 class="text-xl relative font-bold leading-6 dark:text-white uppercase"> {{ $currentCustomer ? $currentCustomer->nickname : '' }}</h3>
                 <p class="text-sm  text-gray-400"> {{ $currentCustomer ? $currentCustomer->fname : '' }}</p>
             </div>
-            <div class="flex gap-2">
-                <button type="button" class="inline-flex w-auto cursor-pointer select-none appearance-none items-center justify-center space-x-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 transition hover:border-gray-300 active:bg-white hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300">Withdraw</button>
-                @include('livewire.pages.includes.payment-deposit')
-            </div>
-        </div>
+        
+    <!-- Payment Deposit Component -->
+    @include('livewire.pages.includes.payment-deposit')
+
+<br>
+    <!-- Withdrawal Payment Component -->
+    @include('livewire.pages.includes.withdrawal-payment')
+
+
     </div>
 
   <form wire:submit.prevent="selectCustomer" class="w-full mb-8">
@@ -60,18 +64,19 @@
                 <th scope="row" class="px-6 py-4 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
                    {{$deposit->created_at}}
                 </th>
-               <td class="px-6 py-4 dark:text-white whitespace-nowrap">
-                  James/weka pesa tsh5000/mama kitulo
+               <td class="px-6 py-4 font-medium text-gray-900 uppercase dark:text-white whitespace-nowrap">
+                  {{$deposit->desc}}
              </td>
 
-                <td class="px-6 py-4 dark:text-white">
-                    50000
+                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                     {{ number_format($deposit->deposit, 2, '.', ',') }}
                 </td>
-                <td class="px-6 py-4 dark:text-white">
-                    00.000
+                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                    {{ number_format($deposit->withdrawal, 2, '.', ',') }}
                 </td>
-                  <td class="px-6 py-4 dark:text-white">
-                    50000
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                    {{ number_format($deposit->amount, 2, '.', ',') }}
+                   
                 </td>
             </tr>
            @endforeach

@@ -15,6 +15,11 @@ class Receive extends Model
         "customer_id",
         "payment_id",
         "user_id",
+        "desc",
+        "profit",
+        "deposit",
+        "withdrawal"
+
     ];
 
     public function customer(): BelongsTo

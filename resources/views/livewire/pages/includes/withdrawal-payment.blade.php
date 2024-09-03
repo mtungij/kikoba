@@ -1,21 +1,19 @@
-
-<div>
 <!-- Button to open the modal -->
 <x-primary-button
     x-data=""
-    x-on:click.prevent="$dispatch('open-modal', 'Deposit')"
+    x-on:click.prevent="$dispatch('open-modal', 'withdrawal')"
 >
-    {{ __('Weka') }}
+    {{ __('Toa') }}
 </x-primary-button>
 
 <!-- Modal -->
-<x-modal name="Deposit" :show="$errors->isNotEmpty()" focusable>
-    <div class="flex items-center justify-center ">
+<x-modal name="withdrawal" :show="$errors->isNotEmpty()" focusable>
+    <div class="flex items-center justify-center">
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg w-full max-w-lg">
             <!-- Modal Header -->
             <div class="px-6 py-4 border-b dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    {{ __('Deposit Form') }}
+                    {{ __('Withdrawal Form') }}
                 </h3>
             </div>
 
@@ -23,20 +21,20 @@
             <div class="border-b border-gray-200 dark:border-gray-600"></div>
 
             <div class="px-6 py-4">
-                <form wire:click.prevent='save'>
+                <form wire:click.prevent='withdraw'>
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <!-- Deposit Input -->
                         <div>
-                            <label for="deposit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kiasi</label>
+                            <label for="deposit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kiasi Cha Kutoa</label>
                             <input 
-                                wire:model="deposit" 
+                                wire:model="withdrawal" 
                                 type="text" 
                                 name="amount" 
                                 id="deposit" 
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
                                 required
                             >
-                            @error('deposit') <span class="text-red-500">{{ $message }}</span> @enderror
+                            @error('withdrawal') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
                         <!-- Payer Input -->
@@ -54,6 +52,22 @@
                         </div>
 
                         <!-- Payment Type Select -->
+
+                          <div>
+                            <label for="profit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">faida</label>
+                            <input 
+                                wire:model="profit" 
+                                type="text" 
+                                name="payer" 
+                                id="payer" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+                                required
+                            >
+                            @error('payer') <span class="text-red-500">{{ $message }}</span> @enderror
+                        </div>
+
+
+
                         <div>
                             <label for="payment_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account Type</label>
                             <select 
@@ -103,4 +117,3 @@
         </div>
     </div>
 </x-modal>
-<div>
