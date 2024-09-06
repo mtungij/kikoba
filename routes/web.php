@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Livewire\Members;
 use App\Livewire\Pages\Admins\Admins;
+use App\Livewire\Pages\Members\Deposits;
 use App\Livewire\Pages\Members\Member;
 use App\Livewire\Pages\Members\Payments;
 use App\Livewire\Pages\Payments\Method;
@@ -36,7 +37,9 @@ Route::resource('users', UserController::class);
     ->middleware(['auth', Method::class])
     ->name('method');
 
-
+Route::get('TodayDeposit',Deposits::class)
+->middleware(['auth',Deposits::class])
+->name('TodayDeposit');
 
     Route::get('admins', Admins::class)
     ->middleware(['auth', Admins::class])

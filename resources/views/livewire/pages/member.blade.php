@@ -20,6 +20,8 @@
                             <input type="number" wire:model="phone" id="address" value="255" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
                             <div class="text-red-500">@error('phone') {{ $message }} @enderror</div>
                         </div>
+
+                    
                         <div class="col-span-6 sm:col-span-3">
                             <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><span class="text-red-500">*</span>Jinsia</label>
                             <select id="countries" wire:model="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
@@ -30,7 +32,18 @@
                             <div class="text-red-500">@error('gender') {{ $message }} @enderror</div>
                         </div>
                     </div>
+
+                    <div class="sm:col-span-3">
+                            <label for="address" class="block mb-2 pt-3 text-sm font-medium text-gray-900 dark:text-white">Passport</label>
+                            <input type="file" wire:model="img" id="address" value="255" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required>
+                            <div class="text-red-500">@error('img') {{ $message }} @enderror</div>
+                        </div>
                     <div class="col-span-6 text-center mt-6">
+
+
+                    @if ($img)
+            <img id="img-preview" class="rounded w-12 h-12 mt-5 block" src="{{$img->temporaryUrl()}}">
+        @endif
 
                         <div wire:loading>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="143" height="143" style="shape-rendering: auto; display: block; background: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink"><g><circle fill="#0099e5" r="10" cy="50" cx="84">
@@ -69,3 +82,13 @@
                 
 </div>
 
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('img-preview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

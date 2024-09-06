@@ -40,7 +40,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased dark:bg-gray-900">
         <div class=" bg-gray-100 dark:bg-gray-900">
             <livewire:layout.navigation />
              <livewire:layout.sidebar/>
@@ -54,7 +54,7 @@
             @endif
 
             <div  class="overflow-y-auto mt-10  bg-gray-50 lg:ml-64  pt-8 dark:bg-gray-900">
-            <main>
+            <main class="p-4">
                 {{ $slot }}
                 
             </main>

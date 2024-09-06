@@ -84,6 +84,8 @@ class Payments extends Component
         'payer' => $this->payer,
         'desc' => $desc,
         'payment_id' => $this->payment_id,
+        'created_at' => now(),
+        'updated_at' => now()
     ]);
 
     $date = now()->format('Y-m-d H:i:s');
@@ -143,10 +145,6 @@ class Payments extends Component
     }
 
 
-   
-
- 
-
 
     public function mount()
     {
@@ -194,13 +192,16 @@ class Payments extends Component
 
         } 
     }
+
+
+   
     
     
 
     public function render()
     {
     
-        $deposits = $this->selectedCustomer ? Receive::where('customer_id', $this->selectedCustomer)->get() : collect([]);
+        $deposits = $this->selectedCustomer ? Receive::where('customer_id', $this->selectedCustomer)->orderBy('created_at','desc')->paginate(6) : collect([]);
        $payments=Payment::all();
         return view('livewire.pages.payments',['payments' => $payments , 'deposits' => $deposits]);
     }

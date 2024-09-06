@@ -15,6 +15,7 @@ class Customer extends Model
         "nickname",
         "phone",
         "gender",
+         "img",
         "completed",
         "status",
     ];

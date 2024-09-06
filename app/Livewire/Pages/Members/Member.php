@@ -3,6 +3,8 @@
 namespace App\Livewire\Pages\Members;
 use App\Exports\MemberExport;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithFileUploads;
 use Masmerise\Toaster\Toaster;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Customer;
@@ -14,10 +16,13 @@ class Member extends Component
 
 
     use WithPagination;
+
+    use WithFileUploads;
     public $fname;
    
     public $nickname;
    
+    public $img;
     public $phone = '255';
     public $gender;
 
@@ -28,7 +33,7 @@ class Member extends Component
 
     protected $rules = [
         'fname' => 'sometimes',
-        
+        'img' => 'sometimes|image|mimes:png,jpeg,jpg',
         'nickname' => 'required',
        
         'phone' => 'required',
@@ -52,8 +57,16 @@ class Member extends Component
             return redirect()->back();
         }
 
-        Customer::create($validated);
+        if (isset($this->img)) {
+          
+            $filePath = $this->img->store('passports', 'public');
+    
+           
+            $validated['img'] = $filePath; 
+        }
 
+        Customer::create($validated);
+      $this->reset('fname','nickname','phone','gender','img');
         Toaster::success('Umefanikiwa kumsajili!' .$validated['fname']. ' '); // 👈
     }
 public function changeDelete($memberid)
