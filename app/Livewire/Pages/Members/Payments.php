@@ -88,8 +88,10 @@ class Payments extends Component
         'updated_at' => now()
     ]);
 
-    $date = now()->format('Y-m-d H:i:s');
-    $message = "Deposit of {$this->deposit} made by {$this->payer} ({$this->nickname}) on {$date}.";
+   
+
+    $date = now()->format('d-m-Y H:i:s');
+    $message = "Ahsante !ndugu {$this->fname} Mchango wako wa Tsh {$this->deposit} umepokelewa Lonri Financial Group leo {$date} kwa maelezo zaidi 0683250019";
     $phone = $this->currentCustomer->phone; 
 
     $this->sendsms($phone, $message);
@@ -136,8 +138,10 @@ class Payments extends Component
             'desc' => $desc,
         ]);
 
-        $message = "Malipo ya {$this->deposit} yamepokelewa na {$this->payer} kikamilifu.";
+        $date= date('d-m-Y H:i:s');
+        $message = "Ahsante ndugu  {$date} umechukua akiba ya Tsh ". number_format($this->withdrawal)."  kutoka kwenye akiba yako Lonri Financial Group  kikamilifu kwa maelezo zaidi 0683250019 .";
         $phone = $this->currentCustomer->phone; 
+        $this->sendsms($phone,$message);
 
         Toaster::success('Withdrawal successfully recorded.');
 

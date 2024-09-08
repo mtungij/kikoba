@@ -6,6 +6,7 @@ use App\Livewire\Pages\Admins\Admins;
 use App\Livewire\Pages\Members\Deposits;
 use App\Livewire\Pages\Members\Member;
 use App\Livewire\Pages\Members\Payments;
+use App\Livewire\Pages\Members\Withdrawals;
 use App\Livewire\Pages\Payments\Method;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,14 @@ Route::resource('users', UserController::class);
 Route::get('TodayDeposit',Deposits::class)
 ->middleware(['auth',Deposits::class])
 ->name('TodayDeposit');
+
+
+Route::get('TodayWithdrawals',Withdrawals::class)
+->middleware(['auth',Withdrawals::class])
+->name('TodayWithdrawals');
+
+
+
 
     Route::get('admins', Admins::class)
     ->middleware(['auth', Admins::class])

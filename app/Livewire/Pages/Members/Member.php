@@ -32,7 +32,7 @@ class Member extends Component
     public $selectuserID = 0;
 
     protected $rules = [
-        'fname' => 'sometimes',
+        'fname' => 'required',
         'img' => 'sometimes|image|mimes:png,jpeg,jpg',
         'nickname' => 'required',
        
