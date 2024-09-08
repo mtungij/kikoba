@@ -1,6 +1,6 @@
 
    
-   <div x-data x-init="initFlowbite()" >
+   <div >
    <div class="rounded shadow-xl w-full overflow-hidden">
         <div class="h-[140px] bg-gradient-to-r from-cyan-500 to-blue-500"></div>
         <div class="px-5 py-2 flex flex-col gap-3 pb-6">

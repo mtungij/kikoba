@@ -1,5 +1,5 @@
 
-<div x-data x-init="initFlowbite()">
+<div>
 
 
 
