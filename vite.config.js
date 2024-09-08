@@ -3,15 +3,14 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     server: {
-        https: true, // Use this for development HTTPS; set to false for non-HTTPS
-        proxy: {
-            // Add a proxy if you need to proxy API requests during development
-            '/api': 'http://localhost',
-        },
+        https: true, // Use this for development HTTPS
     },
     build: {
+        // Adjust if needed
         assetsDir: 'build/assets',
         assetsInlineLimit: 0,
+        // Ensure the base URL is set to HTTPS
+        base: process.env.APP_URL ? new URL(process.env.APP_URL).origin + '/' : '/',
     },
     plugins: [
         laravel({
@@ -23,3 +22,4 @@ export default defineConfig({
         }),
     ],
 });
+
