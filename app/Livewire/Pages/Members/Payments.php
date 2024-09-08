@@ -139,7 +139,7 @@ class Payments extends Component
         ]);
 
         $date= date('d-m-Y H:i:s');
-        $message = "Ahsante ndugu  {$date} umechukua akiba ya Tsh ". number_format($this->withdrawal)."  kutoka kwenye akiba yako Lonri Financial Group  kikamilifu kwa maelezo zaidi 0683250019 .";
+        $message = "Ahsante ndugu  {$date} umechukua  Tsh ". number_format($this->withdrawal)." Kwa maelezo zaidi +255683250019 Lonri Financial Group  .";
         $phone = $this->currentCustomer->phone; 
         $this->sendsms($phone,$message);
 
