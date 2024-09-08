@@ -9,3 +9,12 @@ docker run -it -d \
   --restart always \
   --expose 80 \
    emasanga/mikoposoft_nack:may19
+
+
+
+
+
+
+
+
+  
