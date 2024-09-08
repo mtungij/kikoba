@@ -1,4 +1,4 @@
-<div>
+<div x-data x-init="initFlowbite()">
   
 
 <form>

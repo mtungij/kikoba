@@ -1,4 +1,4 @@
-<div>
+<div x-data x-init="initFlowbite()">
    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xl lg:px-12">
         <!-- Start coding here -->

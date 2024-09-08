@@ -1,5 +1,7 @@
 
-    <div class="rounded shadow-xl w-full overflow-hidden">
+   
+   <div x-data x-init="initFlowbite()" >
+   <div class="rounded shadow-xl w-full overflow-hidden">
         <div class="h-[140px] bg-gradient-to-r from-cyan-500 to-blue-500"></div>
         <div class="px-5 py-2 flex flex-col gap-3 pb-6">
             <div class="h-[90px] shadow-md w-[90px] rounded-full border-4 overflow-hidden -mt-14 border-white">
@@ -182,6 +184,7 @@
 </div>
 @endif
 
+</div>
 </div>
    <script>
     function initSelect2() {
