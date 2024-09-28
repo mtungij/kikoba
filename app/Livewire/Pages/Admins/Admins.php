@@ -7,9 +7,12 @@ use Livewire\Component;
 
 class Admins extends Component
 {
+
+    
     public function render()
     {
-        $admins = User::all();
-        return view('livewire.pages.admins.admins',['admins'=> $admins]);
+        $admins = User::orderBy('created_at', 'desc')->get();
+return view('livewire.pages.admins.admins', ['admins' => $admins]);
+
     }
 }

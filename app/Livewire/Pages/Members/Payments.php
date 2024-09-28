@@ -15,7 +15,7 @@ class Payments extends Component
 
     public $fname;
     public $lname;
-
+   
     public $nickname;
 
     public $gender;
@@ -91,7 +91,7 @@ class Payments extends Component
    
 
     $date = now()->format('d-m-Y H:i:s');
-    $message = "Ahsante !ndugu {$this->fname} Mchango wako wa Tsh {$this->deposit} umepokelewa Lonri Financial Group leo {$date} kwa maelezo zaidi 0683250019";
+    $message = "Ahsante Ndugu {$this->currentCustomer->fname} Mchango wako wa Tsh {$this->deposit} umepokelewa Lonri Financial Group leo {$date} kwa maelezo zaidi 0683250019";
     $phone = $this->currentCustomer->phone; 
 
     $this->sendsms($phone, $message);
@@ -138,8 +138,8 @@ class Payments extends Component
             'desc' => $desc,
         ]);
 
-        $date= date('d-m-Y H:i:s');
-        $message = "Ahsante ndugu  {$date} umechukua  Tsh ". number_format($this->withdrawal)." Kwa maelezo zaidi +255683250019 Lonri Financial Group  .";
+        $date= date('d-m-Y');
+        $message = "Ndugu {$this->currentCustomer->fname}  {$date} umechukua  Tsh ". number_format($this->withdrawal)." Kwa maelezo zaidi +255683250019 Lonri Financial Group  .";
         $phone = $this->currentCustomer->phone; 
         $this->sendsms($phone,$message);
 
@@ -163,10 +163,10 @@ class Payments extends Component
 
     public function sendsms($phone, $message)
 {
-    $api_key = 'gG1FSMH1SvFWGutz7XukCSu9.n'; // Your API key
+    $api_key = 'Kad9LxbWcMWzoSUZrYeiu8v5uM'; // Your API key
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://galadove.mikoposoft.com/api/v1/receive/action/send/sms");
+    curl_setopt($ch, CURLOPT_URL, "https://galadove.loan-pocket.com//api/v1/receive/action/send/sms");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
         'apiKey' => $api_key,
