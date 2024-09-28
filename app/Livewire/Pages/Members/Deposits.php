@@ -7,6 +7,7 @@ use App\Models\Receive;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class Deposits extends Component
 {
@@ -25,6 +26,11 @@ class Deposits extends Component
     public function delete($id)
     {
          $deposit = Receive::find($id)->delete('deposit');
+
+         if( $deposit)
+         {
+            Toaster::success('payment deleted successfully');
+         }
 
       
     }

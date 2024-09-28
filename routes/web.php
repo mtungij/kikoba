@@ -3,11 +3,15 @@
 use App\Http\Controllers\UserController;
 use App\Livewire\Members;
 use App\Livewire\Pages\Admins\Admins;
+use App\Livewire\Pages\Admins\UsersCreate;
+use App\Livewire\Pages\Members\Debts;
 use App\Livewire\Pages\Members\Deposits;
 use App\Livewire\Pages\Members\Member;
 use App\Livewire\Pages\Members\Payments;
 use App\Livewire\Pages\Members\Withdrawals;
 use App\Livewire\Pages\Payments\Method;
+use App\Livewire\Pages\Permission\UserPermission;
+use App\Livewire\Pages\Roles\Roles;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,7 +27,14 @@ Route::view('profile', 'profile')
 
 Route::resource('users', UserController::class);
 
+Route::get('users',Admins::class)
+->middleware(['auth',Admins::class])
+->name('users');
 
+
+Route::get('users',UsersCreate::class)
+->middleware(['auth',UsersCreate::class])
+->name('usersCreate');
     
     Route::get('members', Member::class)
     ->middleware(['auth', Member::class])
@@ -40,12 +51,25 @@ Route::resource('users', UserController::class);
 
 Route::get('TodayDeposit',Deposits::class)
 ->middleware(['auth',Deposits::class])
-->name('TodayDeposit');
+->name('TodayDeposit');    
 
 
 Route::get('TodayWithdrawals',Withdrawals::class)
 ->middleware(['auth',Withdrawals::class])
 ->name('TodayWithdrawals');
+
+Route::get('debts', Debts::class)
+->middleware(['auth',Debts::class])
+->name('debts');
+
+Route::get('permission',UserPermission::class)
+->middleware(['auth',UserPermission::class])
+->name('permission');
+
+
+Route::get('roles',Roles::class)
+->middleware(['auth',Roles::class])
+->name('roles');
 
 
 

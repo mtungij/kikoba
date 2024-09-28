@@ -38,7 +38,7 @@ class Withdrawals extends Component
         $withdrawal =Receive::find($id)->delete('withdrawal');
 
         if($withdrawal) {
-            Toaster::info('umefanikiwa kufuta');
+            Toaster::success('umefanikiwa kufuta malipo');
         }
     }
 
@@ -49,15 +49,7 @@ class Withdrawals extends Component
         return Receive::whereDate('created_at',now()->format('Y-m-d'))->with(['customer','user'])->whereRelation('customer','fname','LIKE', "%{$this->search}%")->get();
 
 
-        if ($this->startDate) {
-            $query->whereDate('created_at', '>=', Carbon::parse($this->startDate));
-        }
-
-        if ($this->endDate) {
-            $query->whereDate('created_at', '<=', Carbon::parse($this->endDate));
-        }
-
-        return $query->get();
+       
     }
 
     
