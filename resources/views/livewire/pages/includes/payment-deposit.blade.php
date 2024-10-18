@@ -26,16 +26,24 @@
             <h3 class=" text-xl font-semibold dark:text-white">Deposit Modal</h3>
             <form wire:click.prevent='save'>
                 <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kiasi</label>
-                        <input type="number" 
-                          wire:model="deposit" 
-                          name="current-password" 
-                          id="current-password"
-                          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
-                          placeholder="" required>
-                          @error('deposit') <span class="text-red-500">{{ $message }}</span> @enderror
-                    </div>
+                <div class="col-span-6 sm:col-span-3">
+    <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kiasi</label>
+    <input 
+        type="text" 
+        wire:model.lazy="deposit" 
+        name="amount" 
+        id="amount"
+        x-data="{ inputValue: @entangle('deposit').defer }"
+        x-mask:dynamic="$money($input)" 
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
+        placeholder="" 
+        required>
+    
+    @error('deposit') 
+        <span class="text-red-500">{{ $message }}</span> 
+    @enderror
+</div>
+
 
                     <div class="col-span-6 sm:col-span-3">
                         <label for="deposit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jina la Mlipaji</label>

@@ -1,6 +1,6 @@
 
 <div class="bg-gray-50 dark:bg-gray-900 py-3 sm:py-5">
-  <div class="px-4 mx-auto max-w-screen-2xl lg:px-12">
+  <div class="w-full">
       <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
           <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
               <div class="flex items-center flex-1 space-x-4">
@@ -77,9 +77,14 @@
                          
                             {{sprintf('%02d' , $index + 1)}}
                           </th>
-                          <td class="px-4 py-2">
-                              <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{$payment->customer->fname}}</span>
+                          
+                          <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                              <div class="flex items-center uppercase">
+                                 
+                              {{$payment->customer->fname}}
+                              </div>
                           </td>
+
                           <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                               <div class="flex items-center uppercase">
                                  

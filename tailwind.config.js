@@ -23,7 +23,7 @@ module.exports = {
                
               },
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
     },

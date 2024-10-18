@@ -1,6 +1,6 @@
 <div>
    <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
-       <div class="mx-auto max-w-screen-xl lg:px-12">
+       <div class="w-full">
            <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                    <div class="w-full md:w-1/2">
@@ -35,7 +35,7 @@
                                <th scope="col" class="px-4 py-3">Depositor</th>
                                <th scope="col" class="px-4 py-3">Balance</th>
                                <th scope="col" class="px-4 py-3">
-                                   <span class="sr-only">Actions</span>
+                                  Actions
                                </th>
                            </tr>
                        </thead>

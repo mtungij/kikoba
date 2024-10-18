@@ -53,14 +53,17 @@ class Payments extends Component
         
         'payer' => 'required|string|max:255',
         'payment_id' => 'required|exists:payments,id',
-        'deposit' => 'required|numeric',
+        'deposit' => 'required|string',
     ];
 
     
     public function save()
     {
+       
        $validated =$this->validate();
+       $this->deposit = str_replace(',', '', $this->deposit);
 
+    
        $payment=Payment::find($this->payment_id);
 
        
@@ -107,9 +110,10 @@ class Payments extends Component
             'payer' => 'required|string|max:255',
             'payment_id' => 'required|exists:payments,id',
             'profit' => 'sometimes|numeric',
-            'withdrawal' => 'required|numeric|min:0',
+            'withdrawal' => 'required|string|min:0',
         ]);
 
+        $this->withdrawal = str_replace(',' , '' , $this->withdrawal );
         $payment = Payment::find($this->payment_id);
 
         $desc = "{$this->payer}/cash withdrawal/{$payment->name}";
