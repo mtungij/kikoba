@@ -4,10 +4,9 @@ import 'select2';
 import 'select2/dist/css/select2.min.css';
 import '../../vendor/masmerise/livewire-toaster/resources/js';
 
-// Import AlpineJS and initialize it
-import Alpine from 'alpinejs';
-window.Alpine = Alpine;
-Alpine.start();
+import mask from "@alpinejs/mask";
+
+Alpine.plugin(mask);
 
 document.addEventListener("livewire:navigating", () => {
     // Mutate the HTML before the page is navigated away...
